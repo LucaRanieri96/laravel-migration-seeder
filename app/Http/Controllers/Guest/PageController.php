@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\Train;
+use App\Models\Trains;
+
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function index()
     {
-        //dd(Train::all());
-        return view('home');
+        $trains = Trains::orderBy('orario_partenza')->get();
+        return view('home', compact('trains'));
     }
 }
