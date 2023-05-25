@@ -22,8 +22,8 @@ return new class extends Migration
             $table->time('orario_arrivo');
             $table->string('codice_treno');
             $table->unsignedInteger('numero_carrozze')->nullable();
-            $table->boolean('in_orario')->default(true);
-            $table->boolean('cancellato')->default(false);
+            $table->string('in_orario');
+            $table->string('cancellato')->nullable();
             $table->timestamps();
         });
     }
