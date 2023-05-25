@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class NomeModelloSeeder extends Seeder
+class TrainsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
