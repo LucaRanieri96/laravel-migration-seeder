@@ -19,10 +19,20 @@ class TrainsSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $train = new Train();
             $train->azienda = $faker->randomElement(['Trenitalia', 'Italo']);
+
             $train->stazione_partenza = $faker->randomElement(['Firenze', 'Arezzo', 'Grosseto', 'Livorno', 'Lucca', 'Massa-Carrara', 'Pisa', 'Pistoia', 'Prato', 'Siena']);
-            $train->stazione_arrivo = $faker->randomElement(['Firenze', 'Arezzo', 'Grosseto', 'Livorno', 'Lucca', 'Massa-Carrara', 'Pisa', 'Pistoia', 'Prato', 'Siena']);
+            $stazionePartenza = $train->stazione_partenza;
+            while ($stazionePartenza !== $train->stazione_arrivo) {
+                $train->stazione_arrivo = $faker->randomElement(['Firenze', 'Arezzo', 'Grosseto', 'Livorno', 'Lucca', 'Massa-Carrara', 'Pisa', 'Pistoia', 'Prato', 'Siena']);
+            }
+            
             $train->orario_partenza = $faker->time();
-            $train->orario_arrivo = $faker->time();
+            $orarioPartenza = $train->orario_partenza;
+
+            while ($orarioPartenza < $train->orario_arrivo) {
+                $train->orario_arrivo = $faker->time();
+            }
+            
             $train->codice_treno = $faker->numberBetween(10000, 99999);
             $train->numero_carrozze = $faker->numberBetween(6, 25);
             $train->in_orario = $faker->boolean();
